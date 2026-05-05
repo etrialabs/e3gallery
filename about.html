@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — e3gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .about-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .about-hero .ah-bg {
+    position: absolute; inset: 0;
+    background-image: url('img/bruarfoss.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.85) brightness(0.45) contrast(1.1);
+  }
+  .about-hero .ah-veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(4,9,26,0.5), rgba(4,9,26,0.85));
+  }
+  .about-hero .ah-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .about-section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-section:last-of-type { border-bottom: 0; }
+  .as-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+  .as-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    padding-top: 6px;
+  }
+  .as-body {
+    max-width: 680px;
+  }
+  .as-body h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(34px, 3.6vw, 48px);
+    line-height: 1.15;
+    color: var(--bone);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .as-body p {
+    color: var(--bone-dim);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .as-body p strong { color: var(--bone); font-weight: 400; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 80px 0 0;
+  }
+  .stat {
+    padding: 56px 32px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 84px;
+    line-height: 1;
+    color: var(--champagne);
+    letter-spacing: -0.02em;
+  }
+  .stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-top: 18px;
+    display: block;
+  }
+
+  .contact-card {
+    background: var(--elevated);
+    border: 1px solid var(--line);
+    padding: 64px 56px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card .grain { opacity: 0.05; }
+  .contact-card h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 36px;
+    color: var(--bone);
+    margin-bottom: 18px;
+    letter-spacing: -0.005em;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .contact-grid .ci-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bone-faint);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .contact-grid .ci-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--bone);
+  }
+  .contact-grid .ci-value a { color: var(--champagne); border-bottom: 1px solid var(--line); padding-bottom: 4px; transition: border-color 300ms var(--ease); }
+  .contact-grid .ci-value a:hover { border-color: var(--champagne); }
+
+  .as-label-col {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .about-photo-wrap {
+    width: 100%;
+    position: relative;
+  }
+  .about-photo-wrap img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.88) contrast(1.04);
+    border: 1px solid var(--line);
+  }
+  .about-photo-wrap .ap-caption {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bone-faint);
+  }
+
+  @media (max-width: 900px) {
+    .as-grid { grid-template-columns: 1fr; gap: 24px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--line); padding: 36px 16px; }
+    .stat:last-child { border-bottom: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .contact-card { padding: 36px 24px; }
+    .about-photo-wrap img { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-slot"></div>
+
+<header class="about-hero" data-screen-label="01 About Hero">
+  <div class="ah-bg" aria-hidden="true"></div>
+  <div class="ah-veil" aria-hidden="true"></div>
+  <div class="grain" style="opacity:0.10;" aria-hidden="true"></div>
+  <div class="ah-content">
+    <span class="eyebrow" data-i18n="about_eyebrow">About the Studio</span>
+    <a href="index.html" class="wordmark size-md">
+      <span class="wm-e">e</span><span class="wm-3">3</span><span class="wm-gallery">gallery</span>
+    </a>
+    <p class="serif italic" style="font-size:22px; color:var(--bone-dim); max-width:520px; margin:0 auto;" data-i18n="about_tagline">A small studio in Barcelona. Twenty-two landscapes carried home from the road.</p>
+  </div>
+</header>
+
+<section class="about-section" data-screen-label="02 The Photographer">
+  <div class="container">
+    <div class="as-grid reveal">
+      <div class="as-label-col">
+        <span class="as-label" data-i18n="about_ph_label">The Photographer</span>
+        <div class="about-photo-wrap">
+          <img src="img/about-roger.jpg" alt="Roger — Reynisfjara, Iceland" />
+          <span class="ap-caption" data-i18n="about_ph_caption">Reynisfjara · Iceland</span>
+        </div>
+      </div>
+      <div class="as-body">
+        <h2 data-i18n="about_ph_h2">A traveller with<br/>a trained eye, betting<br/>on calm and on light.</h2>
+        <p data-i18n="about_ph_p1">I make photographs of places that hold still long enough to be looked at. Iceland in the off season, Provence in the gap weeks, the Picos at first light — landscapes I returned to until they let me in.</p>
+        <p data-i18n="about_ph_p2">The work is patient and quiet. <strong>No filters, no compositing, nothing invented.</strong> A long walk, the right hour, a tripod set on cold ground. What comes back from those mornings is what you see here.</p>
+        <p data-i18n="about_ph_p3">The studio is in Barcelona. The road is everywhere else.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" data-screen-label="03 The Prints">
+  <div class="container">
+    <div class="as-grid reveal">
+      <span class="as-label" data-i18n="about_prints_label">The Prints</span>
+      <div class="as-body">
+        <h2 data-i18n="about_prints_h2">Made small,<br/>made well, made <em>to last.</em></h2>
+        <p data-i18n="about_prints_p1">Each print is an <strong>archival pigment print</strong> on premium photo paper — Premium Luster for landscapes, Enhanced Matte for select verticals. Pigment ink, archival quality, made to last decades on a wall.</p>
+        <p data-i18n="about_prints_p2">Sizes range from intimate 5×7″ studies to gallery-scale 24×36″ statements — each photograph offered in the format that suits it best.</p>
+        <p data-i18n="about_prints_p3">Printed on demand and shipped worldwide via our fulfilment partner. Tracked, insured, typically dispatched within a few business days.</p>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <span class="num">22</span>
+        <span class="lbl" data-i18n="about_stat_landscapes">Landscapes</span>
+      </div>
+      <div class="stat">
+        <span class="num">5</span>
+        <span class="lbl" data-i18n="about_stat_dest">Destinations</span>
+      </div>
+      <div class="stat">
+        <span class="num">∞</span>
+        <span class="lbl" data-i18n="about_stat_ships">Ships Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="contact" data-screen-label="04 Contact">
+  <div class="container">
+    <div class="as-grid reveal">
+      <span class="as-label" data-i18n="about_contact_label">Contact</span>
+      <div class="as-body" style="max-width:none;">
+        <h2 data-i18n="about_contact_h2">Custom sizes, gallery shows,<br/>or just to say hello.</h2>
+        <p data-i18n="about_contact_p">The shop covers most cases. For larger formats, framed pieces, gallery loans or licensing — write directly. I read every email.</p>
+
+        <div class="contact-card">
+          <div class="grain" aria-hidden="true"></div>
+          <h3 data-i18n="about_contact_h3">Get in touch.</h3>
+          <p style="color:var(--bone-dim);" data-i18n="about_contact_reply">Replies within forty-eight hours, unless I'm somewhere without signal.</p>
+
+          <div class="contact-grid">
+            <div>
+              <span class="ci-label" data-i18n="about_ci_email">Email</span>
+              <span class="ci-value"><a href="mailto:hello@e3gallery.com">hello@e3gallery.com</a></span>
+            </div>
+            <div>
+              <span class="ci-label" data-i18n="about_ci_studio">Studio</span>
+              <span class="ci-value">Barcelona, Spain</span>
+            </div>
+            <div>
+              <span class="ci-label" data-i18n="about_ci_shop">Shop</span>
+              <span class="ci-value"><a href="https://www.etsy.com/shop/e3galleryprints" target="_blank" rel="noopener">e3galleryprints on Etsy ↗</a></span>
+            </div>
+            <div>
+              <span class="ci-label" data-i18n="about_ci_follow">Follow</span>
+              <span class="ci-value"><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> &nbsp; <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="data.js"></script>
+<script>
+  mountChrome('about');
+  initReveals();
+</script>
+
+</body>
+</html>
