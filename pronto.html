@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E3 Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Lato:wght@300&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #04091A;
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 70%, rgba(12,28,58,0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 120% 50% at 50% 100%, rgba(8,18,34,1) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 30% 40%, rgba(20,40,80,0.3) 0%, transparent 60%),
+    linear-gradient(180deg, #020812 0%, #060f20 35%, #0a1830 65%, #04091A 100%);
+  animation: breathe 9s ease-in-out infinite alternate;
+}
+@keyframes breathe {
+  from { opacity: 0.88; }
+  to   { opacity: 1; }
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(201,169,110,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 7%,  rgba(245,240,232,0.16) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 14%, rgba(245,240,232,0.10) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 5%,  rgba(201,169,110,0.18) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 16%, rgba(245,240,232,0.12) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 83% 9%, rgba(245,240,232,0.20) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 22%, rgba(245,240,232,0.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 6%  33%, rgba(245,240,232,0.07) 0%, transparent 100%),
+    radial-gradient(1px 1px at 33% 26%, rgba(245,240,232,0.10) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 28%, rgba(201,169,110,0.13) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 48% 11%, rgba(201,169,110,0.24) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 35%, rgba(245,240,232,0.08) 0%, transparent 100%);
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  0%   { opacity: 0.5; }
+  50%  { opacity: 1.0; }
+  100% { opacity: 0.6; }
+}
+
+.wrap {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 96px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: fadeUp 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
+}
+.logo .e3 { color: #C9A96E; }
+.logo .g  { color: #F5F0E8; }
+
+.rule {
+  width: 24px;
+  height: 1px;
+  background: rgba(201,169,110,0.5);
+  margin: 0 auto 48px;
+  opacity: 0;
+  transform: scaleX(0);
+  animation: expandRule 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 1.2s forwards;
+}
+@keyframes expandRule {
+  from { opacity:1; transform: scaleX(0); }
+  to   { opacity:1; transform: scaleX(1); }
+}
+
+.tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: rgba(245,240,232,0.75);
+  opacity: 0;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 1.6s forwards;
+}
+
+.meta {
+  position: fixed;
+  bottom: 36px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.22);
+  opacity: 0;
+  animation: fadeIn 1s ease 2.4s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(18px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+
+@media (max-width: 480px) {
+  .logo { font-size: 68px; }
+  .tagline { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="stars"></div>
+
+<div class="wrap">
+  <div class="logo">
+    <span class="e3">e3</span><span class="g">g</span>
+  </div>
+  <div class="rule"></div>
+  <p class="tagline">pronto lo sabrás.</p>
+</div>
+
+<p class="meta">Fine Art Photography &nbsp;·&nbsp; Roger Orpinell</p>
+
+</body>
+</html>
