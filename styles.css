@@ -399,3 +399,9 @@ input { font-family: inherit; }
   .footer-meta { text-align: left; }
   .footer-bottom { flex-direction: column; gap: 14px; align-items: flex-start; }
 }
+
+/* Móvil estrecho: ocultar COLLECTION / ABOUT / CONTACT, dejar solo Shop ↗ + lang toggle */
+@media (max-width: 600px) {
+  .nav-links { gap: 12px; }
+  .nav-links a.always:nth-child(-n+3) { display: none; }
+}
